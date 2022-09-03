@@ -4,8 +4,22 @@ import Slider from './RangeSlider';
 
 //Creamos componente funcional para mostrar interface
 export default function Atadenoise() {
-
   const [value,onChange]=useState(0);
+
+  //Aquí agregamos el Hook useEffect para enviar petición con Fetch
+  useEffect(()=> {
+    const requestOptions = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({title: 'Prueba de envío data con Reacrt Hooks'})
+    };
+
+    fetch('http://localhost/atadenoise', requestOptions)
+      .then(console.error())
+      .then(response => response.json())
+
+      //array vacío significa que este efecto solo funcionara una vez
+  }, []);
 
 
   return (
